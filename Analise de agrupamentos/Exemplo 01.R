@@ -1,43 +1,43 @@
 library(factoextra) 
 library(FactoMineR)
 
-# Compute PCA with ncp = 3
+# Calcula PCA com ncp = 3
 res.pca <- PCA(USArrests, 
                ncp = 3, 
                graph = FALSE) 
 
-# Compute hierarchical clustering on principal components 
+# Calcula clusters hierarquicos em PCA 
 res.hcpc <- HCPC(res.pca, graph = FALSE)
 
 # Dendrograma
 fviz_dend(res.hcpc, 
-          cex = 0.7, # Label size 
-          palette = "jco", # Color palette see ?ggpubr:: ggpar 
+          cex = 0.7, # Tamanho da etiqueta 
+          palette = "jco", # Paleta de cores, veja: ?ggpubr:: ggpar 
           rect = TRUE, 
-          rect_fill = TRUE, # Add rectangle around groups 
-          rect_border = "jco", # Rectangle color 
-          labels_track_height = 0.8 # Augment the room for labels 
+          rect_fill = TRUE, # Adiciona retângulos com cantos arredondados 
+          rect_border = "jco", # Cor do retângulo
+          labels_track_height = 0.8 # Aumenta o espaço para as etiquetas
           )
            
-fviz_cluster(res.hcpc, repel = TRUE, # Avoid label overlapping 
-             show.clust.cent = TRUE, # Show cluster centers 
-             palette = "jco", # Color palette see ?ggpubr:: ggpar 
+fviz_cluster(res.hcpc, repel = TRUE, # Evitar sobreposição de etiquetas
+             show.clust.cent = TRUE, # Apresenta os centroides
+             palette = "jco", 
              ggtheme = theme_minimal(), 
-             main = "Factor map" 
+             main = "Mapa fatorial" 
              )
 
-# Principal components + tree 
+# PCA + Dendrograma 
 plot(res.hcpc, choice = "3D.map")
 
 
 # Variáveis categóricas
 data(tea) 
 
-# Performing MCA
+# Realizando MCA
 res.mca <- MCA(tea, 
-               ncp = 20, # Number of components kept 
-               quanti.sup = 19, # Quantitative supplementary variables 
-               quali.sup = c( 20: 36), # Qualitative supplementary variables 
+               ncp = 20, # NNúmero de componentes 
+               quanti.sup = 19, # Variáveis suplementares quantitativas
+               quali.sup = c( 20: 36), # Variáveis suplementares qualitativas 
                graph = FALSE)
 
 res.hcpc <- HCPC(res.mca, 
@@ -46,7 +46,7 @@ res.hcpc <- HCPC(res.mca,
 
 # Dendrograma
 fviz_dend(res.hcpc, 
-          show_labels = FALSE) # Mapa fatoria dos indivíduos
+          show_labels = FALSE) # Mapa fatorial dos indivíduos
 
 fviz_cluster(res.hcpc, 
              geom = "point", 
@@ -66,14 +66,3 @@ res.hcpc$desc.var$category
 res.hcpc$desc.axes
 
 res.hcpc$desc.ind$para
-
-
-
-
-
-
-
-
-
-           
-                     
