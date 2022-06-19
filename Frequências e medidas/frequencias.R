@@ -37,7 +37,7 @@ dist_freq_qualitativas <- cbind(freq = table(dados$Sexo),
 dist_freq_qualitativas
 
 colnames(dist_freq_qualitativas) <- c('Frequência', 'Porcentagem (%)')
-rolnames(dist_freq_qualitativas) <- c('Masculino', 'Feminino')
+rownames(dist_freq_qualitativas) <- c('Masculino', 'Feminino')
 
 dist_freq_qualitativas
 
@@ -96,7 +96,7 @@ dist_freq_quantitativas_personalizadas[
 ]
 
 ## Gráficos
-#
+
 hist(dados$Altura)
 hist(
      x = dados$Altura,

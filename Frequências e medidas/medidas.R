@@ -1,7 +1,7 @@
 # Importando dataset
 dados <- read.csv('dados.csv')
 
-# Dataframe de exemplo
+# Dataframes de exemplo
 materias <- c('Matemática', 'Português', 'Inglês', 'Geografia', 'História', 'Física', 'Química')
 Fulano <- c(8, 10, 4, 8, 6, 10, 8)
 Beltrano <- c(10, 2, 0.5, 1, 3, 9.5, 10)
@@ -20,7 +20,7 @@ aggregate(list(Renda = dados$Renda), # Variável em estudo
 median(dados$Renda)
 aggregate(list(Renda = dados$Renda), # Variável em estudo
           list(Sexo = dados$Sexo), # Particionamento
-          list(mean, median))
+          median)
 
 exemplo_moda <- c(1, 2, 2, 3, 4, 4, 5, 6, 7, 7)
 exemplo_moda
@@ -162,6 +162,7 @@ ggplot(data = dados[dados$Renda < 10000, ], aes(x = Cat.Sexo, y = Renda)) +
 
 
 dados$Cat.Anos.de.Estudo <- factor(dados$Anos.de.Estudo, order = TRUE)
+
 levels(dados$Cat.Anos.de.Estudo) <- anos_de_estudo
 head(dados)
 
@@ -215,7 +216,7 @@ ggplot(data = notas_fulano, aes(x = row.names(notas_fulano), y = Fulano)) +
 mean(notas_fulano$Desvio.Absoluto)
 
 # Instalando o pacote DescTools
-install.packages('library(DescTools)')
+install.packages('DescTools')
 library(DescTools)
 
 MeanAD(df$Fulano)
