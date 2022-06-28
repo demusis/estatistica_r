@@ -8,15 +8,12 @@ library(factoextra)
 library(FactoMineR)
 
 # Carrega base de dados
-data(decathlon2)
-head(decathlon2)
 
-# Seleciona faixa de valores
-decathlon2.active <- decathlon2[ 1: 23, 1: 10] 
-head(decathlon2.active[, 1: 6], 4)
+dados <- Dados_brutos_v_1_03_Dados_brutos
+dados <- dados[,2:15]
 
 # Análise de componentes principais
-res.pca <- PCA(decathlon2.active, graph = FALSE)
+res.pca <- PCA(dados, graph = TRUE)
 print(res.pca)
 
 # Autovalores
@@ -106,41 +103,3 @@ fviz_pca_biplot(res.pca,
                 col.var = "#2E9FDF", # Variables color 
                 col.ind = "#696969" # Individuals color 
                )
-
-# Variáveis suplementares
-
-# Quantitativas (colunas 11 e 12)
-res.pca <- PCA(decathlon2, 
-               ind.sup = 24:27, 
-               quanti.sup = 11:12, 
-               quali.sup = 13, 
-               graph = FALSE)
-
-res.pca$quanti.sup
-
-fviz_pca_var(res.pca) # Variáveis suplementares quantitativas em tracejado
-
-fviz_pca_var(res.pca, invisible = "var") # Somente suplementares
-fviz_pca_var(res.pca, invisible = "quanti.sup") # Sem suplementares
-
-# Indivíduos
-res.pca$ind.sup
-
-p <- fviz_pca_ind(res.pca, 
-                  col.ind.sup = "blue", 
-                  repel = TRUE) 
-p <- fviz_add(p, 
-              res.pca$quali.sup$coord, # Inclui variáveis suplementares 
-                                       # qualitativas
-              color = "red") 
-p
-
-# Qualitativas (coluna 13)
-res.pca$quali
-
-fviz_pca_ind(res.pca, 
-             habillage = 13, 
-             addEllipses = TRUE, 
-             ellipse.type = "confidence", 
-             palette = "jco", 
-             repel = TRUE)

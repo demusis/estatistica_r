@@ -16,35 +16,34 @@ D1 <- c(1, 2, 2, 3, 4, 8, 9, 23, 25, 30, 23, 78, 55, 99, 34, 98, 89, 89, 89, 78,
 D2 <- rnorm(101)
 
 # Testes de aderência a normal
-lillie.test(D1) # Teste de Lilliefors
-shapiro.test(D1) # teste de Shapiro-Wilk
+lillie.test(D2) # Teste de Lilliefors
+shapiro.test(D2) # teste de Shapiro-Wilk
 
 # Teste de randomicidade
-runs.test(D1) # Teste de Wald-Wolfowitz (run test)
+runs.test(D2) # Teste de Wald-Wolfowitz (run test)
 
 # Teste t para duas amostras independentes
-t.test(a,b)  
+t.test(a, b)  
 t.test(y ~ x) 
 
 # Teste U de Mann-Whitney para duas amostras independentes
-wilcox.test(a,b) 
+wilcox.test(a, b) 
 wilcox.test(y ~ x) 
 
 # Teste t para duas amostras pareadas
 t.test(a,b,paired=TRUE)  
 
 # Teste de Wilcoxon para amostras pareadas 
-wilcox.test(a,b,paired=TRUE)
+wilcox.test(a, b, paired=TRUE)
 
 # H1: E(b)>E(a)
 t.test (a, b, paired = TRUE, alt = "greater")
 
 # H1: E(b)>E(a)
-wilcox.test(a,b,paired=TRUE, alt = "greater")
-
+wilcox.test(a, b, paired=TRUE, alt = "greater")
 
 # Teste t de uma amostra
-t.test(a,mu=11,alternative="two.sided") # Ho: E(a)=11
+t.test(a, mu=11, alternative="two.sided") # Ho: E(a)=11
 
 # Teste de Wilcoxon de uma amostra
-wilcox.test(a,mu=11,alternative = "two.sided")
+wilcox.test(a, mu=11, alternative = "two.sided")

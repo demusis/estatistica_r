@@ -8,7 +8,6 @@ library(lmtest)
 library(repr)
 
 
-
 # Devine dados para análise
 jacare = data.frame(
   lnComp = c(3.87, 3.61, 4.33, 3.43, 3.81, 3.83, 3.46, 3.76,
@@ -17,11 +16,12 @@ jacare = data.frame(
              3.58, 3.64, 5.90, 4.43, 4.38, 4.42, 4.25)
 )
 
+
 # Gráfico de dispersão
 xyplot(lnPeso ~ lnComp, data = jacare,
        xlab = "Comprimento - ln(polegadas)",
        ylab = "Peso - ln(quilos)",
-       main = "JacarÃ©s"
+       main = "Jacarés"
 )
 
 
@@ -41,7 +41,7 @@ p
 
 
 # Previsão
-dado_novo = data.frame(lnComp=5) 
+dado_novo = data.frame(lnComp = 5) 
 
 predict(mod1, dado_novo, interval="confidence") 
 
@@ -83,17 +83,18 @@ summary(model.car)
 
 # Predição baseada apenas no disp
 model.car_disp<-lm(mpg ~ disp, carros)
+
 summary(model.car_disp) # disp significativo
 
 # Predição baseada somente no hp
 model.car_hp<-lm(mpg ~ hp, carros)
 summary(model.car_hp) # hp significativo
 
-# Prediçãobaseada em VOL e WT
+# Prediçãobaseada em disp e hp
 model.car_disp_hp<-lm(mpg ~ disp + hp, carros)
 summary(model.car_disp_hp) # hp borderline
 
-# Existe um problema de colinearidade entre VOL e WT
+# Existe um problema de colinearidade entre disp e hp
 ### Gráfico de dispersão com coeficientes de correlação
 panel.cor<-function(x,y,digits=2,prefix="",cex.cor)
 {
@@ -146,4 +147,3 @@ plot(model.car_final)
 
 # Gráfico de Ajuste a normalidade
 qqPlot(model.car,id.n = 5) # QQ plot of studentized residuals helps in identifying outlier 
-

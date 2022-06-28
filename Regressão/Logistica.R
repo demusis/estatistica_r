@@ -1,3 +1,5 @@
+setwd("/cloud/project/Regressão")
+
 # Regressão Logistica
 eleicao = read.csv("Dados_eleicao.csv", sep=',', header=T)
 eleicao
@@ -5,7 +7,7 @@ eleicao
 plot(eleicao$DESPESAS, eleicao$SITUACAO)
 summary(eleicao)
 
-cor(eleicao$DESPESAS,eleicao$SITUACAO)
+cor(eleicao$DESPESAS, eleicao$SITUACAO)
 
 modelo = glm(SITUACAO ~ DESPESAS, data=eleicao, family="binomial") 
 summary(modelo)
@@ -15,7 +17,9 @@ plot(eleicao$DESPESAS, eleicao$SITUACAO, col='red', pch=20)
 points(eleicao$DESPESAS, modelo$fitted, pch=4)
 
 # Testar o modelo com os próprios candidatos
-prever <- predict(modelo, newdata=eleicao, type="response"  )
+prever <- predict(modelo, 
+                  newdata=eleicao, 
+                  type="response"  )
 prever <- prever >= 0.5
 prever
 
@@ -30,7 +34,9 @@ prevereleicao = read.csv("Novos_candidatos.csv", sep=',', header=T)
 prevereleicao
 
 # Previsão
-prevereleicao$RESULT = predict(modelo, newdata=prevereleicao, type="response") 
+prevereleicao$RESULT = predict(modelo, 
+                               newdata=prevereleicao, 
+                               type="response") 
 prevereleicao$RESULT
 prevereleicao$RESULT >= 0.5
 

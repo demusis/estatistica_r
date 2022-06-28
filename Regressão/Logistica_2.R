@@ -109,7 +109,7 @@ legend(x="topright", #Posição da legenda
 barplot(data.frame(table(ourdata$IRRIGATION))[,2], names.arg = c(0, 1), 
         col="lightblue", 
         border="black", 
-        xlab="IRRIGATION",
+        xlab="IRRIGAÇÃO",
         ylab="FREQUÊNCIA", 
         main ="Frequência de IRRIGATION")
 
@@ -206,3 +206,4 @@ dredge(logit_fruit)
 # nada mais é do que o AIC corrigido para amostras pequenas. Quanto menor o 
 # valor de AIC, melhor o modelo. No nosso caso, o melhor modelo é o que contem 
 # as variáveis irrigação e pólen.
+
